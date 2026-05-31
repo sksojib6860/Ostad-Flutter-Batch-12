@@ -1,3 +1,4 @@
+import 'package:expene_tracker_app/features/home/presentation/screen/widget/add_transaction_fab.dart';
 import 'package:expene_tracker_app/features/home/presentation/screen/widget/header.dart';
 import 'package:expene_tracker_app/features/home/presentation/screen/widget/summary_card.dart';
 import 'package:expene_tracker_app/features/home/presentation/screen/widget/transaction_and_all.dart';
@@ -55,6 +56,8 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
       ),
+
+      floatingActionButton: const AddTransactionFab(),
     );
   }
 }
