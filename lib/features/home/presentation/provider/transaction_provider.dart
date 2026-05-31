@@ -85,4 +85,9 @@ class TransactionProvider with ChangeNotifier {
     _transactions.removeAt(index);
     notifyListeners();
   }
+
+  void addTransaction(Transaction transaction) {
+    _transactions.insert(0, transaction);
+    notifyListeners();
+  }
 }
