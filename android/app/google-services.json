@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "42687603233",
+    "firebase_url": "https://mymobile-7700f-default-rtdb.firebaseio.com",
+    "project_id": "mymobile-7700f",
+    "storage_bucket": "mymobile-7700f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42687603233:android:5da4b54e04be81f6017960",
+        "android_client_info": {
+          "package_name": "com.example.expene_tracker_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-ep22UXaPPmL03g4-CdomJSjqaMCeAqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42687603233:android:af39ccf1eeff2ab0017960",
+        "android_client_info": {
+          "package_name": "com.example.mymobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-ep22UXaPPmL03g4-CdomJSjqaMCeAqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
