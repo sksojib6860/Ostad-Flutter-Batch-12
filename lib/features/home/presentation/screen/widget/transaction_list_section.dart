@@ -17,7 +17,7 @@ class TransactionListSection extends StatelessWidget {
       itemCount: provider.transactions.length,
       itemBuilder: (context, index) {
         final tx = provider.transactions[index];
-        return TransactionItem(tx: tx, index: index);
+        return TransactionItem(tx: tx);
       },
     );
   }

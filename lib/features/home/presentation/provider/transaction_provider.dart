@@ -1,53 +1,26 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import '../../domain/models/transaction.dart';
+import '../../domain/repositories/transaction_repository.dart';
 
 class TransactionProvider with ChangeNotifier {
-  final List<Transaction> _transactions = [
-    Transaction(
-      title: 'Salary',
-      category: 'Work',
-      amount: 5000.00,
-      date: DateTime.now(),
-      isIncome: true,
-    ),
-    Transaction(
-      title: 'Grocery',
-      category: 'Food',
-      amount: 150.00,
-      date: DateTime.now().subtract(const Duration(days: 1)),
-      isIncome: false,
-    ),
-    Transaction(
-      title: 'Rent',
-      category: 'Housing',
-      amount: 1200.00,
-      date: DateTime.now().subtract(const Duration(days: 2)),
-      isIncome: false,
-    ),
-    Transaction(
-      title: 'Freelance',
-      category: 'Work',
-      amount: 800.00,
-      date: DateTime.now().subtract(const Duration(days: 3)),
-      isIncome: true,
-    ),
-    Transaction(
-      title: 'Internet Bill',
-      category: 'Bills',
-      amount: 60.00,
-      date: DateTime.now().subtract(const Duration(days: 4)),
-      isIncome: false,
-    ),
-    Transaction(
-      title: 'Dinner',
-      category: 'Food',
-      amount: 45.00,
-      date: DateTime.now().subtract(const Duration(days: 5)),
-      isIncome: false,
-    ),
-  ];
+  final TransactionRepository _repository;
+  List<Transaction> _transactions = [];
+  StreamSubscription<List<Transaction>>? _transactionSubscription;
 
-  List<Transaction> get transactions => [..._transactions];
+  TransactionProvider(this._repository) {
+    _initTransactions();
+  }
+
+  void _initTransactions() {
+    _transactionSubscription?.cancel();
+    _transactionSubscription = _repository.getTransactions().listen((transactions) {
+      _transactions = transactions;
+      notifyListeners();
+    });
+  }
+
+  List<Transaction> get transactions => _transactions;
 
   double get totalBalance {
     double total = 0;
@@ -81,13 +54,19 @@ class TransactionProvider with ChangeNotifier {
     return total;
   }
 
-  void deleteTransaction(int index) {
-    _transactions.removeAt(index);
-    notifyListeners();
+  Future<void> deleteTransaction(String? id) async {
+    if (id != null) {
+      await _repository.deleteTransaction(id);
+    }
   }
 
-  void addTransaction(Transaction transaction) {
-    _transactions.insert(0, transaction);
-    notifyListeners();
+  Future<void> addTransaction(Transaction transaction) async {
+    await _repository.addTransaction(transaction);
+  }
+
+  @override
+  void dispose() {
+    _transactionSubscription?.cancel();
+    super.dispose();
   }
 }

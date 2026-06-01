@@ -1,3 +1,6 @@
+import 'package:expene_tracker_app/core/services/firestore_service.dart';
+import 'package:expene_tracker_app/features/home/data/repositories/transaction_repository_impl.dart';
+import 'package:expene_tracker_app/features/home/domain/repositories/transaction_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,9 +12,24 @@ class ExpenseTrackerApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => TransactionProvider(),
-      child: MaterialApp(home: const MyHomePage()),
+    return MultiProvider(
+      providers: [
+        Provider(create: (context) => FirestoreService()),
+        ProxyProvider<FirestoreService, TransactionRepository>(
+          update: (context, firestoreService, previous) =>
+              TransactionRepositoryImpl(firestoreService),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TransactionProvider(
+            Provider.of<TransactionRepository>(context, listen: false),
+          ),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.dark(),
+        home: const MyHomePage(),
+      ),
     );
   }
 }

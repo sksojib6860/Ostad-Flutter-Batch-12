@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../../../domain/models/transaction.dart';
 import '../../provider/transaction_provider.dart';
 
@@ -26,9 +27,7 @@ class AddTransactionFab extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         highlightElevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: const Icon(Icons.add, color: Colors.white, size: 30),
       ),
     );
@@ -116,7 +115,7 @@ class AddTransactionFab extends StatelessWidget {
                             alpha: 0.3,
                           ),
                           labelStyle: TextStyle(
-                            color: isIncome ? Colors.greenAccent : Colors.black,
+                            color: isIncome ? Colors.greenAccent : Colors.white,
                           ),
                         ),
                       ],

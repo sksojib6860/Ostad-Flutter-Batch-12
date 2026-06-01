@@ -6,8 +6,7 @@ import '../../provider/transaction_provider.dart';
 
 class TransactionItem extends StatelessWidget {
   final Transaction tx;
-  final int index;
-  const TransactionItem({super.key, required this.tx, required this.index});
+  const TransactionItem({super.key, required this.tx});
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +82,7 @@ class TransactionItem extends StatelessWidget {
                 size: 20,
               ),
               onPressed: () {
-                provider.deleteTransaction(index);
+                provider.deleteTransaction(tx.id);
               },
             ),
           ],
