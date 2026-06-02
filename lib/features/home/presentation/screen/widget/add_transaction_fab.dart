@@ -103,7 +103,7 @@ class AddTransactionFab extends StatelessWidget {
                             alpha: 0.3,
                           ),
                           labelStyle: TextStyle(
-                            color: !isIncome ? Colors.redAccent : Colors.black,
+                            color: !isIncome ? Colors.redAccent : Colors.white,
                           ),
                         ),
                         const SizedBox(width: 10),

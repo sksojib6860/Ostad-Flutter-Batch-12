@@ -16,7 +16,7 @@ class HeaderSection extends StatelessWidget {
               style: TextStyle(color: Colors.white70, fontSize: 16),
             ),
             Text(
-              'John Doe',
+              'Sojeb Chandra',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,

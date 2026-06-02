@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -49,8 +50,8 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB-ep22UXaPPmL03g4-CdomJSjqaMCeAqY',
+  static FirebaseOptions get android => FirebaseOptions(
+    apiKey: dotenv.env['ANDROID_API_KEY'] ?? '',
     appId: '1:42687603233:android:5da4b54e04be81f6017960',
     messagingSenderId: '42687603233',
     projectId: 'mymobile-7700f',
@@ -58,8 +59,8 @@ class DefaultFirebaseOptions {
     storageBucket: 'mymobile-7700f.appspot.com',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBJLIDU9W5MCBtX5GU9Y9T_OSbS4z_I_Hs',
+  static FirebaseOptions get ios => FirebaseOptions(
+    apiKey: dotenv.env['IOS_API_KEY'] ?? '',
     appId: '1:42687603233:ios:62dabf81d5249648017960',
     messagingSenderId: '42687603233',
     projectId: 'mymobile-7700f',
@@ -67,5 +68,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'mymobile-7700f.appspot.com',
     iosBundleId: 'com.example.expeneTrackerApp',
   );
-
 }

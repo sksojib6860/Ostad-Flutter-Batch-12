@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'features/home/presentation/provider/transaction_provider.dart';
-import 'features/home/presentation/screen/home_page.dart';
+import 'features/screens/splash_screen.dart';
 
 class ExpenseTrackerApp extends StatelessWidget {
   const ExpenseTrackerApp({super.key});
@@ -28,7 +28,7 @@ class ExpenseTrackerApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(),
-        home: const MyHomePage(),
+        home: const SplashScreen(),
       ),
     );
   }
